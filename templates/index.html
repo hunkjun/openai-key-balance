@@ -327,7 +327,7 @@ button[type="submit"]:focus {
   <body>
 <div class="content">
 <h1 class="text-3xl font-semibold text-center mb-8 text-gradient">OpenAI API Key 余额查询(批量)</h1>
-<div style="margin:32px 0;font-size:24px;text-align:center"><span style="color:blue">需要购买账号或key请前往</span><a style="color: red;font-weight: 400;" target="_blank" href="https://shop.usesless.com/"> >>店铺<<</a></div>
+<!-- <div style="margin:32px 0;font-size:24px;text-align:center"><span style="color:blue">需要购买账号或key请前往</span><a style="color: red;font-weight: 400;" target="_blank" href="https://shop.usesless.com/"> >>店铺<<</a></div> -->
 <p style="color:red;text-align:center;">** 本站不保存 KEY 信息，查询后请自行保存 **</p>
     <form>
       <label for="api-key-input" class="w-28 mr-4 text-gradient">API密钥:</label>
@@ -359,8 +359,8 @@ button[type="submit"]:focus {
       <tbody></tbody>
     </table>
   <footer style="text-align: center; margin-top: 20px;">
-    <a href="en.html" style="color: white;text-decoration: none;" target="_self">[ English ]</a>
-    <a href="https://github.com/whc23mj/openai-billing-checker" style="color: white;text-decoration: none;" target="_blank">[ Github ]</a>
+    <!-- <a href="en.html" style="color: white;text-decoration: none;" target="_self">[ English ]</a> -->
+    <a href="https://github.com/hunkjun/openai-key-balance" style="color: rgb(205, 37, 37);text-decoration: none;" target="_blank">[ Github ]</a>
   </footer>
 </div>
 
@@ -376,9 +376,9 @@ button[type="submit"]:focus {
 
         // 设置API请求URL和请求头
         // const urlSubscription = 'https://api.openai.com/v1/dashboard/billing/subscription'; // 查是否订阅
-        const urlSubscription = 'https://shop.usesless.com/openai-billing-backend'; // 查是否订阅
+        const urlSubscription = 'http://127.0.0.1:5000/subscription'; // 查是否订阅
         const urlBalance = 'https://api.openai.com/dashboard/billing/credit_grants'; // 查普通账单
-        const urlUsage = `https://shop.usesless.com/openai-billing-backend/usage?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`; // 查使用量
+        const urlUsage = `http://127.0.0.1:5000/usage?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`; // 查使用量
         const headers = {
           "Authorization": "Bearer " + apiKey,
           "Content-Type": "application/json"
@@ -633,9 +633,9 @@ async function checkBilling(apiKey) {
 
   // 设置API请求URL和请求头
   // const urlSubscription = 'https://api.openai.com/v1/dashboard/billing/subscription'; // 查是否订阅
-  const urlSubscription = 'https://shop.usesless.com/openai-billing-backend'; // 查是否订阅
-  const urlBalance = 'https://shop.usesless.com/openai-billing-backend/usage'; // 查普通账单
-  urlUsage = `https://shop.usesless.com/openai-billing-backend/usage?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`; // 查使用量
+  const urlSubscription = 'http://127.0.0.1:5000'; // 查是否订阅
+  const urlBalance = 'http://127.0.0.1:5000/usage'; // 查普通账单
+  urlUsage = `http://127.0.0.1:5000/usage?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`; // 查使用量
   const headers = {
     "Authorization": "Bearer " + apiKey,
     "Content-Type": "application/json"
@@ -662,7 +662,7 @@ async function checkBilling(apiKey) {
         // 获取当前月的第一天日期
         const day = now.getDate();  // 本月过去的天数
         startDate = new Date(now - (day - 1) * 24 * 60 * 60 * 1000); // 本月第一天
-        urlUsage = `https://shop.usesless.com/openai-billing-backend/usage?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`; // 查使用量
+        urlUsage = `http://127.0.0.1:5000/usage?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`; // 查使用量
         response = await fetch(urlUsage, {headers});
         usageData = await response.json();
         totalUsage = usageData.total_usage / 100;

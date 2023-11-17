@@ -1,14 +1,14 @@
 
 import requests
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, resources=r'/*')
 
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/subscription', methods=['GET','POST'])
 def get_subscription():
     queryUrl = 'https://api.openai.com/dashboard/billing/subscription'
     # get Authorization
@@ -49,6 +49,9 @@ def get_usage():
     r = requests.get(queryUrl, headers=headers, params=data)
     return r.json()
 
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 if __name__ == '__main__':
     # print("key:", get_usage())

@@ -6,3 +6,20 @@
 - python代码实现代理查询接口，然后通过Html前端展示；
 
 - 可多个keys批量查询；
+
+
+### 部署
+
+```shell
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+# pip freeze | tee requirements.txt
+
+python3 app.py
+```
+
+### 效果图
+
+![图片](./images/web.jpg)
