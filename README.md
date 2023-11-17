@@ -1,7 +1,8 @@
-# query-openai-key-info
 
-### 参考地址
+### 说明
 
-### 原因
+- 境内无法通过直连访问openai查询key使用情况;
 
-由于无法从客户端直连openai.com, 所以需要一个后端包装一层。
+- python代码实现代理查询接口，然后通过Html前端展示；
+
+- 可多个keys批量查询；
